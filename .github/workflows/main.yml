@@ -10,7 +10,7 @@ env:
  CAMINHO_PROJETO: ./SiteContagem/SiteContagem.csproj 
  CAMINHO_PUBLISH: app 
  NOME_ARTEFATO: APIContagem
- NOME_WEBAPP_AZURE: anp-githubactions-exemplo-01
+ NOME_WEBAPP_AZURE: anp-admin
 
 jobs:
  build:
