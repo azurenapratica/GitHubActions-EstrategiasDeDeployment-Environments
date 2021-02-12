@@ -84,4 +84,10 @@ jobs:
       uses: Azure/login@v1.1
       with:
        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Swap Slots Dev to Prod
+      uses: Azure/cli@1.0.4
+      with:
+        # Specify the script here
+        inlineScript: az webapp deployment slot swap -n ${{ env.NOME_WEBAPP_AZURE }} -g "github-actions" -s "preprod" --target-slot "production"
 
