@@ -10,7 +10,7 @@ env:
  CAMINHO_PROJETO: ./SiteContagem/SiteContagem.csproj 
  CAMINHO_PUBLISH: app 
  NOME_ARTEFATO: APIContagem
- NOME_WEBAPP_AZURE: anp-admin
+ NOME_WEBAPP_AZURE: webapp-gha-examples
 
 jobs:
  build:
@@ -89,5 +89,5 @@ jobs:
       uses: Azure/cli@1.0.4
       with:
         # Specify the script here
-        inlineScript: az webapp deployment slot swap -n ${{ env.NOME_WEBAPP_AZURE }} -g "github-actions" -s "preprod" --target-slot "production"
+        inlineScript: az webapp deployment slot swap -n ${{ env.NOME_WEBAPP_AZURE }} -g "github-actions" -s "staging" --target-slot "production"
 
