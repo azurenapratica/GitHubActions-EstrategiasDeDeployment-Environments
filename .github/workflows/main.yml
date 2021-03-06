@@ -11,6 +11,7 @@ env:
  CAMINHO_PUBLISH: app 
  NOME_ARTEFATO: APIContagem
  NOME_WEBAPP_AZURE: webapp-gha-examples
+ SLOT_NAME: staging
 
 jobs:
  build:
@@ -62,7 +63,7 @@ jobs:
     - name: Deployment no Azure App Service
       uses: Azure/webapps-deploy@v2
       with:
-       slot-name: preprod
+       slot-name: ${{ env.SLOT_NAME }}
        app-name: ${{ env.NOME_WEBAPP_AZURE }}
        package: ${{ env.CAMINHO_PUBLISH }}
 
@@ -89,5 +90,5 @@ jobs:
       uses: Azure/cli@1.0.4
       with:
         # Specify the script here
-        inlineScript: az webapp deployment slot swap -n ${{ env.NOME_WEBAPP_AZURE }} -g "github-actions" -s "staging" --target-slot "production"
+        inlineScript: az webapp deployment slot swap -n ${{ env.NOME_WEBAPP_AZURE }} -g "github-actions" -s ${{ env.SLOT_NAME }} --target-slot "production"
 
